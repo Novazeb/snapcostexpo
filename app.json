@@ -1,18 +1,19 @@
 {
   "expo": {
-    "name": "snapcostnova",
-    "slug": "snapcostnova",
+    "name": "snapcostexpo",
+    "slug": "snapcostexpo",
+    "owner": "novazeb",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "snapcostnova",
+    "scheme": "snapcostexpo",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#09090B",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -28,15 +29,32 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
+          "backgroundColor": "#09090B",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "imageWidth": 110
         }
-      ]
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "SnapCost memerlukan akses kamera untuk memindai resi belanja Anda."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "SnapCost memerlukan Face ID untuk mengamankan data keuangan Anda."
+        }
+      ],
+      "expo-sqlite"
     ],
+    "extra": {
+      "eas": {
+        "projectId": "1da80ce6-0007-4550-9e4d-42858f01787f"
+      }
+    },
     "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+      "typedRoutes": true
     }
   }
 }
