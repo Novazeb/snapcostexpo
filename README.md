@@ -1,56 +1,110 @@
-# Welcome to your Expo app 👋
+# SnapCost
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> Solusi Hemat Pengeluaran
 
-## Get started
+Aplikasi pencatat dan pengelola pengeluaran cerdas berbasis React Native dan Expo. SnapCost dirancang dengan antarmuka Swiss Minimalist FinTech yang berfokus pada kecepatan, privasi data lokal (offline-first), serta kemudahan mencatat transaksi baik melalui pemindaian resi fisik (OCR) maupun input manual.
 
-1. Install dependencies
+---
+
+## Antarmuka Aplikasi
+
+<p align="center">
+  <img src="./assets/images/snapcost-mockup.jpg" alt="SnapCost Mobile Interface Mockup" width="420" />
+</p>
+
+---
+
+## Fitur Utama
+
+- **Pindai Resi Belanja (OCR)**: Ekstraksi otomatis nama toko, tanggal, dan nominal total belanja langsung dari kamera atau galeri foto.
+- **Pencatatan Transaksi Manual**: Input transaksi pengeluaran langsung dari beranda tanpa memerlukan foto struk fisik.
+- **Pelacakan Batas Anggaran Bulanan**: Pantau persentase penggunaan anggaran bulanan dengan bilah progres adaptif dan indikator peringatan visual.
+- **Analisis dan Visualisasi Pengeluaran**:
+  - Grafik batang perbandingan pengeluaran antar bulan.
+  - Diagram lingkaran distribusi pengeluaran per kategori.
+- **Filter Kategori Dinamis**: Kategorisasi transaksi lengkap (Makanan, Transportasi, Belanja, Tagihan, Hiburan, Kesehatan, Pendidikan, Lainnya) dengan warna dan ikon tematik.
+- **Proteksi Biometrik**: Kunci akses aplikasi menggunakan sensor sidik jari atau Face ID untuk menjaga privasi finansial.
+- **Pengingat Harian**: Notifikasi harian dengan kustomisasi jam dan menit sesuai jadwal pengguna.
+- **Penyimpanan Lokal dan Aman (Offline-First)**: Data tersimpan secara privat di perangkat menggunakan SQLite tanpa ketergantungan server eksternal.
+- **Ekspor Data ke CSV**: Fasilitas unduh dan bagikan rekapitulasi data transaksi dalam format spreadsheet CSV.
+- **Desain Minimalis Swiss**: Palet warna matte bertema gelap dengan aksen emerald, ramah di mata, dan adaptif terhadap navigasi gestur Android dan iOS.
+
+---
+
+## Tumpukan Teknologi
+
+- **Framework**: React Native 0.81, Expo SDK 54
+- **Routing**: Expo Router (File-based navigation)
+- **Bahasa**: TypeScript 5.3 (Strict Mode)
+- **Basis Data**: Expo SQLite
+- **Kamera dan Gambar**: Expo Camera, Expo Image Picker, Expo Image Manipulator
+- **Keamanan**: Expo Local Authentication
+- **Notifikasi**: Expo Notifications
+- **Ikonografi**: @expo/vector-icons (Ionicons)
+- **Manajemen State**: React Context API dengan custom hooks
+
+---
+
+## Struktur Direktori
+
+```text
+snapcostexpo/
+├── app/                      # Rute halaman (Expo Router)
+│   ├── (tabs)/               # Navigasi tab utama
+│   │   ├── index.tsx         # Dasbor ringkasan pengeluaran
+│   │   ├── analytics.tsx     # Analitik dan grafik
+│   │   ├── scan.tsx          # Pemindai kamera resi
+│   │   ├── history.tsx       # Riwayat dan pencarian transaksi
+│   │   └── settings.tsx      # Pengaturan akun, anggaran, dan sistem
+│   ├── scan-review.tsx       # Review hasil scan dan form input
+│   └── transaction/[id].tsx  # Detail dan edit transaksi
+├── assets/                   # Ikon, logo, dan mockup aplikasi
+├── components/               # Komponen UI modular
+│   ├── analytics/            # Komponen grafik analitik
+│   ├── dashboard/            # Komponen kartu dan widget beranda
+│   └── ui/                   # Elemen dasar (Button, Card, Header, dll.)
+├── constants/                # Tema, kategori, utilitas tanggal, dan data awal
+├── database/                 # Konfigurasi SQLite dan repository data
+├── hooks/                    # Custom hooks (tema, transaksi, haptik)
+├── services/                 # Layanan OCR, biometrik, notifikasi, dan ekspor
+└── types/                    # Definisi tipe TypeScript
+```
+
+---
+
+## Memulai Pengembangan
+
+### Prasyarat
+
+- Node.js versi 18 atau lebih baru
+- npm atau yarn
+- Aplikasi Expo Go di perangkat fisik (Android atau iOS) atau emulator
+
+### Instalasi
+
+1. Klon repositori ini:
+
+   ```bash
+   git clone https://github.com/Novazeb/snapcostexpo.git
+   cd snapcostexpo
+   ```
+
+2. Pasang dependensi:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Jalankan server pengembangan Expo:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. Pindai kode QR yang muncul di terminal menggunakan aplikasi Expo Go pada perangkat Android, atau kamera pada perangkat iOS.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Lisensi
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Proyek ini didistribusikan di bawah lisensi MIT.
